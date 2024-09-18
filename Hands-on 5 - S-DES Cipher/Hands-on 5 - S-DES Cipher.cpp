@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 const int S1Box[16] = {101, 010, 001, 110, 011, 100, 111, 000, 001, 100, 110, 010, 000, 111, 101, 011};
