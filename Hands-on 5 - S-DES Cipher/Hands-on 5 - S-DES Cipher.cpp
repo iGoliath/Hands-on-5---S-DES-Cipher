@@ -9,19 +9,16 @@ void DESEncrypt(int *text, int *key);
 int main() {
 	int text[12];
 	int key[9];
-	long textIn, keyIn;
+	string textIn;
 	cout << "Please enter the text in binary you wish to encrypt/decrypt: ";
-	cin >> textIn;
-	for (int i = 11; i >= 0; i--) {
-		text[i] = textIn % 10;
-		textIn /= 10;
+	getline(cin, textIn, '\n');
+	for (int i = 0; i <= 11; i++) {
+		text[i] = stoi(textIn.substr(i, 1));
 	}
 	cout << "Please enter the given key value: ";
-	cin.ignore();
-	cin >> keyIn;
-	for (int i = 8; i >= 0; i--) {
-		key[i] = keyIn % 10;
-		keyIn /= 10;
+	getline(cin, textIn, '\n');
+	for (int i = 0; i <= 8; i++) {
+		key[i] = stoi(textIn.substr(i, 1));
 	}
 
 	DESEncrypt(text, key);
@@ -89,8 +86,8 @@ void DESEncrypt(int *text, int *key) {
 		SOne /= 10;
 	}
 
-	int ROne[8];
-	for (int i = 0; i < 7; i++) {
+	int ROne[6];
+	for (int i = 0; i < 6; i++) {
 		if (LZero[i] == fRiMinus1ModKi[i]) {
 			ROne[i] = 0;
 		}
@@ -98,7 +95,7 @@ void DESEncrypt(int *text, int *key) {
 			ROne[i] = 1;
 	}
 
-	int toReturn[12] = { LOne[0], LOne[1], LOne[2], LOne[3], LOne[4], LOne[5], ROne[6], ROne[7], ROne[8], ROne[9], ROne[10], ROne[11] };
+	int toReturn[12] = { LOne[0], LOne[1], LOne[2], LOne[3], LOne[4], LOne[5], ROne[0], ROne[1], ROne[2], ROne[3], ROne[4], ROne[5] };
 
 	cout << "CypherText is: ";
 	for (int i = 0; i < 11; i++) {
